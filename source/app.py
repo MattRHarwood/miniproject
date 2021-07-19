@@ -53,7 +53,6 @@ def main_menu():
         main_menu()
 
 def product_options(prod_list):
-
     inp2 = appfs.get_menu_input("sub")
     
     try:
@@ -86,7 +85,6 @@ def product_options(prod_list):
     product_options(prod_list)
 
 def courier_options(cour_list):
-    
     inp3 = appfs.get_menu_input("sub")
     
     try:
@@ -118,16 +116,15 @@ def courier_options(cour_list):
     courier_options(cour_list)
 
 def order_options(ord_list, cour_list):
-    
     inp4 = appfs.get_menu_input("sub")
     
     try:
         inp4 = int(inp4)
     except:
         print("\nplease select 0 to 5\n")
-        order_options(ord_list)
+        order_options(ord_list, cour_list)
     
-    if inp4 in list(range(5)):
+    if inp4 in list(range(6)):
         if inp4 == 0:
             main_menu()
         elif inp4 == 1:
@@ -138,13 +135,17 @@ def order_options(ord_list, cour_list):
             print("New order List: ")
             appfs.print_dictlist(ord_list)
         elif inp4 == 3:
-            appfs.update_dict(ord_list)
+            appfs.print_dictlist(ord_list)
+            to_update = int(input("enter which order no you want to update")) - 1
+            appfs.update_dict(ord_list[to_update])
             print("New order List: ")
             appfs.print_dictlist(ord_list)
         elif inp4 == 4:
             appfs.delete_dict(ord_list)
             print("New order List: ")
             appfs.print_dictlist(ord_list)
+        elif inp4 == 5:
+            appfs.update_ord_status(ord_list)
     else:
         print("\nplease select 0 to 5\n")
         order_options(ord_list)

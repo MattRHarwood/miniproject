@@ -77,10 +77,21 @@ def print_dictlist(dict_list):
             print(f"{key} : {value}")
     print("\n")
 
-def update_dict(dict_list):
-    None
+def update_dict(dict):
+    for key, value in dict.items():
+        new = int(input(f"enter new value for {value}, leave blank to keep "))
+        if bool(new) == False:
+            continue
+        elif key == "courier":
+            new = int(new)
+            dict[key] = new
+        else:
+            dict[key] = new
 
 def delete_dict(dict_list):
+    None
+
+def update_ord_status(dict_list):
     None
 
 def add_dict_input(cour_list):
@@ -89,7 +100,7 @@ def add_dict_input(cour_list):
     phone_number = input("enter customer phone number: ")
     
     print_applist(cour_list)
-    courier = int(input("enter desired courier: "))
+    courier = int(input("enter desired courier: ")) - 1
     return name, address, phone_number, courier
 
 def add_ord_dict(dict_list, name, address, phone_number, courier):
