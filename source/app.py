@@ -136,12 +136,14 @@ def order_options(ord_list, cour_list):
             appfs.print_dictlist(ord_list)
         elif inp4 == 3:
             appfs.print_dictlist(ord_list)
-            to_update = int(input("enter which order no you want to update")) - 1
+            to_update = int(input("enter which order no you want to update: ")) - 1
             appfs.update_dict(ord_list[to_update])
             print("New order List: ")
             appfs.print_dictlist(ord_list)
         elif inp4 == 4:
-            appfs.delete_dict(ord_list)
+            appfs.print_dictlist(ord_list)
+            del_index = int(input("which order do you want to delete: ")) - 1
+            appfs.delete_dict(ord_list, del_index)
             print("New order List: ")
             appfs.print_dictlist(ord_list)
         elif inp4 == 5:

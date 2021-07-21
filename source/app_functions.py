@@ -88,8 +88,8 @@ def update_dict(dict):
         else:
             dict[key] = new
 
-def delete_dict(dict_list):
-    None
+def delete_dict(dict_list, del_index):
+    for 
 
 def update_ord_status(dict_list):
     None
