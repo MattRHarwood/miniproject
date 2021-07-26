@@ -1,5 +1,5 @@
 #Week 4 miniproject
-import a
+from app_functions import *
 
 print("Welcome to App!\n\n")
 
