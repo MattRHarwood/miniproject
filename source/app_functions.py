@@ -29,3 +29,11 @@ def add_to_dict_list(dict_list : list, input_function : Callable):
         new_val = input_function({f"enter new value for {key}: "})
         new_dict[key] = new_val
     dict_list.append(new_dict)
+
+def update_dict_list(dict_list : list, index : int, input_function : Callable):
+    for key in dict_list[index].keys():
+        new_val = input_function(f"enter new value for {key}, or enter to skip: ")
+        if new_val == "":
+            continue
+        else:
+            dict_list[index][key] = new_val
