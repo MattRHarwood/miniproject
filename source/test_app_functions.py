@@ -80,9 +80,32 @@ def test_delete_dict_from_dict_list():
     "price": 0.8},
     {"name": "Lemon Fanta",
     "price": 1.2}]
-    
     index = 1
+    
     
     delete_dict_from_dict_list(test_dict_list, index)
     
     assert len(test_dict_list) == len(test_dict_list2) - 1
+
+def test_update_order_status():
+    test_ord_dict_list = [{
+    "customer_name": "John",
+    "customer_address": "Unit 2, 12 Main Street, LONDON, WH1 2ER",
+    "customer_phone": "0789887334",
+    "courier": 2, 
+    "status": "preparing",
+    "items": [1, 3, 4]},
+    {"customer_name": "John",
+    "customer_address": "Unit 2, 12 Main Street, LONDON, WH1 2ER",
+    "customer_phone": "0789887334",
+    "courier": 2, 
+    "status": "preparing",
+    "items": [1, 3, 4]}]
+    index = 1
+    mock_input = Mock()
+    mock_input.return_value = "being delivered"
+    
+    update_dict_list(test_ord_dict_list, index, mock_input)
+    
+    assert test_ord_dict_list[1]["status"] == "being delivered"
+    

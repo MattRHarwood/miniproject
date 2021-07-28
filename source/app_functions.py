@@ -15,7 +15,7 @@ def save_dict_list_to_csv(dict_list : list, csv_writer : object, filename_csv : 
         writer.writeheader()
         writer.writerows(dict_list)
 
-def get_val_int_input(list_size : int, input_function : Callable, print_function : Callable):
+def get_val_int_input(list_size : int, input_function : Callable, print_function : Callable) -> int:
     a = list_size - 1
     input = input_function(f"enter a number between 0 and {a}")
     if input not in range(list_size):
@@ -55,3 +55,7 @@ def update_dict_list(dict_list : list, index : int, input_function : Callable):
 
 def delete_dict_from_dict_list(dict_list : list, index : int):
     del dict_list[index]
+
+def update_order_status(ord_dict_list : list, index : int, input_function : Callable):
+    new_status = input_function("what would like to update the order status to?")
+    ord_dict_list[index]["status"] = new_status
