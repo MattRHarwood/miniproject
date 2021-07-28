@@ -15,11 +15,14 @@ def save_dict_list_to_csv(dict_list : list, csv_writer : object, filename_csv : 
         writer.writeheader()
         writer.writerows(dict_list)
 
-def get_val_int_input():
-    None
-
-def get_val_dict_input():
-    None
+def get_val_int_input(list_size : int, input_function : Callable, print_function : Callable):
+    a = list_size - 1
+    input = input_function(f"enter a number between 0 and {a}")
+    if input not in range(list_size):
+        print_function("please enter a valid input")
+        get_val_int_input(list_size, input_function, print_function)
+    else:
+        return input
 
 def print_dict_list(dict_list : list, print_function : Callable):
     for i in range(len(dict_list)):

@@ -1,4 +1,4 @@
-from app_functions import print_dict_list, add_to_dict_list, update_dict_list
+from app_functions import print_dict_list, add_to_dict_list, update_dict_list, get_val_int_input
 from abc import abstractproperty
 from unittest.mock import Mock, patch, mock_open
 
@@ -16,9 +16,14 @@ def test_save_dict_list_to_csv():
     None
 
 def test_get_val_int_input():
-    inputs = [1, -1, "1"]
-    list_size = 5
-    message = "test"
+    list_sizes = [2, 4]
+    mock_input = Mock()
+    mock_input.side_effect = [1, -1, "1", 1, 1, 1, 1]
+    mock_print = Mock()
+    
+    for size in list_sizes:
+        result = get_val_int_input(size, mock_input, mock_print)
+        assert (result in range(size)) or result == None
 
 def test_print_dict_list():
     test_print = Mock()
