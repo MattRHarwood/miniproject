@@ -52,3 +52,6 @@ def update_dict_list(dict_list : list, index : int, input_function : Callable):
             dict_list[index][key] = new_val
         except:
             dict_list[index][key] = new_val
+
+def delete_dict_from_dict_list(dict_list : list, index : int):
+    del dict_list[index]

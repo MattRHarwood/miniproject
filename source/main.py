@@ -17,7 +17,7 @@ def main_menu():
         + "2 - Couriers Menu\n\n"
         + "3 - Orders Menu\n\n")
     
-    menu_option = get_val_int_input(4)
+    menu_option = get_val_int_input(4, menu)
     
     if menu_option == 0:
         save_products(prod_list)
@@ -54,7 +54,7 @@ def sub_menu(type : str, dict_list : list):
     elif sub_option == 2:
         add_to_dict_list(dict_list)
     elif sub_option == 3:
-        None
+        index = input_function("which entry would you like to update? ") - 1
     elif sub_option == 4:
         None
     elif type == "orders" and sub_option == 5:

@@ -1,4 +1,4 @@
-from app_functions import print_dict_list, add_to_dict_list, update_dict_list, get_val_int_input
+from app_functions import print_dict_list, add_to_dict_list, update_dict_list, get_val_int_input, delete_dict_from_dict_list
 from abc import abstractproperty
 from unittest.mock import Mock, patch, mock_open
 
@@ -60,12 +60,29 @@ def test_update_dict_list():
     "price": 0.8},
     {"name": "Lemon Fanta",
     "price": 1.2}]
-    index = 1
+    index = 0
     mock_input = Mock()
     mock_input.side_effect = ["test_update", "42", "", ""]
-    
-    update_dict_list(test_dict_list, 0, mock_input)
-    update_dict_list(test_dict_list, 0, mock_input)
+    update_dict_list(test_dict_list, index, mock_input)
+    update_dict_list(test_dict_list, index, mock_input)
     
     assert test_dict_list[0] == {"name": "test_update",
     "price": 42}
+
+def test_delete_dict_from_dict_list():
+    test_dict_list = [
+    {"name": "Coke Zero",
+    "price": 0.8},
+    {"name": "Lemon Fanta",
+    "price": 1.2}]
+    test_dict_list2 = [
+    {"name": "Coke Zero",
+    "price": 0.8},
+    {"name": "Lemon Fanta",
+    "price": 1.2}]
+    
+    index = 1
+    
+    delete_dict_from_dict_list(test_dict_list, index)
+    
+    assert len(test_dict_list) == len(test_dict_list2) - 1
