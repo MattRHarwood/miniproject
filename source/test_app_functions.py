@@ -18,7 +18,7 @@ def test_save_dict_list_to_csv():
 def test_get_val_int_input():
     list_sizes = [2, 4]
     mock_input = Mock()
-    mock_input.side_effect = [1, -1, "1", 1, 1, 1, 1]
+    mock_input.side_effect = ["1", "-1", "1", "10", "1", "1", "1"]
     mock_print = Mock()
     
     for size in list_sizes:
@@ -108,4 +108,3 @@ def test_update_order_status():
     update_dict_list(test_ord_dict_list, index, mock_input)
     
     assert test_ord_dict_list[1]["status"] == "being delivered"
-    
