@@ -16,14 +16,15 @@ def test_save_dict_list_to_csv():
     None
 
 def test_get_val_int_input():
-    list_sizes = [2, 4]
+    starts = [0, 1]
+    ends = [5, 3]
     mock_input = Mock()
-    mock_input.side_effect = ["1", "-1", "1", "10", "1", "1", "1"]
+    mock_input.side_effect = ["1", "-1", "10", "10", "1", "1", "1"]
     mock_print = Mock()
     
-    for size in list_sizes:
-        result = get_val_int_input(size, mock_input, mock_print)
-        assert (result in range(size)) or result == None
+    for i in range(len(starts)):
+        result = get_val_int_input(starts[i], ends[i], mock_input, mock_print)
+        assert (result in range(starts[i], ends[i])) or result == None
 
 def test_print_dict_list():
     test_print = Mock()
@@ -35,7 +36,7 @@ def test_print_dict_list():
     
     print_dict_list(test_dict_list, test_print)
     
-    test_print.assert_any_call("Entry 1")
+    test_print.assert_any_call("\nEntry 1")
     test_print.assert_any_call("name = Coke Zero")
     assert test_print.call_count == 6
 

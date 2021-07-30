@@ -15,17 +15,12 @@ def save_dict_list_to_csv(dict_list : list, csv_writer : object, filename_csv : 
         writer.writeheader()
         writer.writerows(dict_list)
 
-def get_val_int_input(list_size : int, input_function : Callable, print_function : Callable, *args) -> int:
-    if args:
-        b = args
-        a = list_size
-    else:
-        b = 0
-        a = list_size - 1
-    input = int(input_function(f"enter a number from {b} to {a}:\n"))
-    if input not in range(list_size):
+def get_val_int_input(start : int, end : int, input_function : Callable, print_function : Callable) -> int:
+    end_inc = end - 1
+    input = int(input_function(f"enter a number from {start} to {end_inc}:\n"))
+    if input not in range(start, end):
         print_function("please enter a valid input")
-        get_val_int_input(list_size, input_function, print_function)
+        get_val_int_input(start, end, input_function, print_function)
     else:
         return input
 
@@ -39,7 +34,7 @@ def print_dict_list(dict_list : list, print_function : Callable):
 def add_to_dict_list(dict_list : list, input_function : Callable):
     new_dict = {}
     for key in dict_list[0].keys():
-        new_val = input_function(f"enter a value for {key}: ")
+        new_val = input_function(f"enter a value for {key}:\n")
         try: 
             new_val = int(new_val)
             new_dict[key] = new_val
@@ -49,7 +44,7 @@ def add_to_dict_list(dict_list : list, input_function : Callable):
 
 def update_dict_list(dict_list : list, index : int, input_function : Callable):
     for key in dict_list[index].keys():
-        new_val = input_function(f"enter new value for {key}, or enter to skip: ")
+        new_val = input_function(f"enter new value for {key}, or enter to skip:\n")
         if new_val == "":
             continue
         try: 
@@ -62,5 +57,5 @@ def delete_dict_from_dict_list(dict_list : list, index : int):
     del dict_list[index]
 
 def update_order_status(ord_dict_list : list, index : int, input_function : Callable):
-    new_status = input_function("what would like to update the order status to?")
+    new_status = input_function("what would like to update the order status to?\n")
     ord_dict_list[index]["status"] = new_status

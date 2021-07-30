@@ -1,4 +1,4 @@
-import source.app_functions
+from source.app_functions import *
 from abc import abstractproperty
 from unittest.mock import Mock
 

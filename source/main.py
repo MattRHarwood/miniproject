@@ -43,7 +43,7 @@ def main_menu():
         + "2 - Couriers Menu\n\n"
         + "3 - Orders Menu\n\n")
     
-    menu_option = get_val_int_input(4, builtins.input, builtins.print)
+    menu_option = get_val_int_input(0, 4, builtins.input, builtins.print)
     
     if menu_option == 0:
         # save_products(prod_list)
@@ -69,9 +69,9 @@ def sub_menu(type : str, dict_list : list):
         + f"4 - Delete from {type.title()} List\n")
     if type == "orders":
         print("5 - Update Order Status\n\n")
-        sub_option = get_val_int_input(6, builtins.input, builtins.print)
+        sub_option = get_val_int_input(0, 6, builtins.input, builtins.print)
     else:
-        sub_option = get_val_int_input(5, builtins.input, builtins.print)
+        sub_option = get_val_int_input(0, 5, builtins.input, builtins.print)
         
     if sub_option == 0:
         main_menu()
@@ -82,15 +82,18 @@ def sub_menu(type : str, dict_list : list):
     elif sub_option == 3:
         print_dict_list(dict_list, builtins.print)
         print("Which entry do you want to update?")
-        index = get_val_int_input(((len(dict_list))), builtins.input, builtins.print, 1)
+        index = get_val_int_input((1, (len(dict_list) + 1)), builtins.input, builtins.print) - 1
         update_dict_list(dict_list, index, builtins.input)
     elif sub_option == 4:
         print("Which entry do you want to delete?")
-        index2 = get_val_int_input(((len(dict_list))), builtins.input, builtins.print, 1)
+        print_dict_list(dict_list, builtins.print)
+        index2 = get_val_int_input((1, (len(dict_list) + 1)), builtins.input, builtins.print) - 1
         delete_dict_from_dict_list(dict_list, index2)
     elif type == "orders" and sub_option == 5:
         print("Which entry do you want to update the status of?")
-        index3 = get_val_int_input(((len(dict_list))), builtins.input, builtins.print, 1)
+        print_dict_list(dict_list, builtins.print)
+        index3 = get_val_int_input(1, (len(dict_list) + 1), builtins.input, builtins.print) - 1
+        print(index3)
         update_order_status(dict_list, index3, builtins.input)
     
     print("Current List:")
