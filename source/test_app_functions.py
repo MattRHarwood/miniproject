@@ -2,18 +2,8 @@ from app_functions import print_dict_list, add_to_dict_list, update_dict_list, g
 from abc import abstractproperty
 from unittest.mock import Mock, patch, mock_open
 
-# @patch("builtins.open" , callable = mock_open)
-# @patch("csv.DictReader")
-# def test_load_csv_to_dict_list(mock_dict_reader, mock_file_opener):
-#     mock_dict_reader.return_value = {"name": "Coke Zero",
-#     "price": 0.8},
-#     {"name": "Lemon Fanta",
-#     "price": 1.2}]
-    
-#     assert
-
-def test_save_dict_list_to_csv():
-    None
+def test_connect_to_mysql_db():
+    mock_db_library = Mock()
 
 def test_get_val_int_input():
     starts = [0, 1]
